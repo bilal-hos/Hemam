@@ -61,8 +61,8 @@ class User extends Authenticatable
         return $this->morphTo('userable');
     }
 
-    public function addresses()
+    public function address()
     {
-        return $this->hasMany(Address::class);
+        return $this->hasOne(Address::class, 'user_id');
     }
 }

@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();  // Explicitly setting 'users' table name
             $table->string('address');
             $table->string('city');
             $table->string('country')->default('Syria');

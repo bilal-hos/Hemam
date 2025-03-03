@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Address;
 use App\Models\User;
 use App\Models\Volunteer;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +17,11 @@ class VolunteerService
         $data['password'] = Hash::make($data['password']);
         $user = User::create($data);
         $volunteer = Volunteer::create([
+            'user_id' => $user->id,
+        ]);
+        $address = Address::create([
+            'address' => $data['address'],
+            'city' => $data['city'],
             'user_id' => $user->id,
         ]);
         $user->userable_id = $volunteer->id;

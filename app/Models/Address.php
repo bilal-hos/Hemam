@@ -9,8 +9,11 @@ class Address extends Model
     protected $guraded = ['id', 'created_at', 'updated_at'];
     protected $hidden = ['created_at', 'updated_at'];
 
+    protected $fillable = ['address', 'city', 'user_id'];
+
+
     public function user()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 }
